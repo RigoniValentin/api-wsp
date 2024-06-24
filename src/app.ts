@@ -2,7 +2,7 @@ import { createBot, createFlow, MemoryDB, createProvider, addKeyword } from '@bo
 import { BaileysProvider, handleCtx } from '@bot-whatsapp/provider-baileys'
 
 
-const flowBienvenida = addKeyword('hola').addAnswer('Bienvenido al chat de soporte de Río Gestión!! ¿En qué puedo ayudarte?')
+const florGenerico = addKeyword('.*').addAnswer('Este chat es solo para *notificaciones* de tu sistema Río Gestión.\n\nPara contactar con soporte debe iniciar una *solicitud de atención* mediante la funcionalidad de *"Contactar con soporte"* ubicada en la esquina inferior derecha del sistema.\n\n*Gracias!!*');
 
 
 const main = async () => {
@@ -20,7 +20,7 @@ const main = async () => {
     }))
 
     await createBot({
-        flow: createFlow([flowBienvenida]),
+        flow: createFlow([florGenerico]),
         database: new MemoryDB(),
         provider
     })
